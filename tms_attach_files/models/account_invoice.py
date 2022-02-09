@@ -11,9 +11,9 @@ BOM_UTF8U = BOM_UTF8.decode('UTF-8')
 
 
 class AccountInvoice(models.Model):
-    _inherit = 'account.invoice'
+    _inherit = 'account.move'
 
-    @api.multi
+
     def _validate_xml(self, xml_signed):
         try:
             expense_line = self.env['tms.expense.line'].search(
@@ -108,7 +108,7 @@ class AccountInvoice(models.Model):
         self.env['ir.attachment'].with_context({}).create(data_attach)
         return True
 
-    @api.multi
+
     def _validate_invoice_xml(self, xml_signed):
         xml_str = base64.decodestring(xml_signed).lstrip(BOM_UTF8)
         xml_str_rep = xml_str.replace(

@@ -7,7 +7,7 @@ from odoo import api, models
 class TmsExpense(models.Model):
     _inherit = 'tms.expense'
 
-    @api.multi
+
     def create_supplier_invoice(self, lines):
         for line in lines:
             res = super().create_supplier_invoice(line)

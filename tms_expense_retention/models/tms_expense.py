@@ -8,7 +8,7 @@ from odoo.exceptions import ValidationError
 class TmsExpense(models.Model):
     _inherit = 'tms.expense'
 
-    @api.multi
+
     def get_retention(self):
         for rec in self:
             retentions = self.env['tms.retention'].search([])
@@ -38,7 +38,7 @@ class TmsExpense(models.Model):
                     'control': True
                 })
 
-    @api.multi
+
     def get_travel_info(self):
         for rec in self:
             res = super().get_travel_info()
